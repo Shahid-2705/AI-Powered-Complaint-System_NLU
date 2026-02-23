@@ -66,4 +66,4 @@ else:
 
     # Show raw data optionally
     if st.checkbox("Show Raw Incident Data"):
-    st.dataframe(df.sort_values(by='created_at', ascending=False).drop(columns=['id', 'reply_text']))
+        st.dataframe(df.sort_values(by='created_at', ascending=False).drop(columns=['id', 'reply_text']))
