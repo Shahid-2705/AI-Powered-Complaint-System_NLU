@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Incident & Complaint System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI-Powered Complaint System</h1>
+            <p>Submit your issue and our intelligent engine will process and route it.</p>
+        </header>
+
+        <main class="main-card">
+            {% if error %}
+            <div class="alert error">{{ error }}</div>
+            {% endif %}
+            
+            <form method="POST" action="/">
+                <div class="form-group">
+                    <label for="complaint">Describe your issue:</label>
+                    <textarea name="complaint" id="complaint" rows="5" placeholder="E.g., I ordered a laptop a week ago and it's still not here. This is unacceptable..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Submit Complaint</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

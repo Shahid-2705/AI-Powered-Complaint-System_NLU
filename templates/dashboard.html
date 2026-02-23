@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Live Dashboard - Smart Incident System</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Live Analytics Dashboard</h1>
+
+        <a href="/" class="btn-secondary">Back to Home</a>
+
+        <hr>
+
+        <!-- Category Chart -->
+        <h2>Complaint Categories</h2>
+        <canvas id="categoryChart"></canvas>
+
+        <hr>
+
+        <!-- Priority Chart -->
+        <h2>Priority Distribution</h2>
+        <canvas id="priorityChart"></canvas>
+
+        <hr>
+
+        <!-- Daily Trend -->
+        <h2>Daily Complaint Trend</h2>
+        <canvas id="dailyChart"></canvas>
+
+    </div>
+
+    <script>
+        // Convert Flask data to JavaScript arrays
+        const categoryLabels = {{ category_data | map(attribute = 0) | list | safe }};
+        const categoryCounts = {{ category_data | map(attribute = 1) | list | safe }};
+
+        const priorityLabels = {{ priority_data | map(attribute = 0) | list | safe }};
+        const priorityCounts = {{ priority_data | map(attribute = 1) | list | safe }};
+
+        const dailyLabels = {{ daily_data | map(attribute = 0) | list | safe }};
+        const dailyCounts = {{ daily_data | map(attribute = 1) | list | safe }};
+
+        // Category Chart
+        new Chart(document.getElementById('categoryChart'), {
+            type: 'bar',
+            data: {
+                labels: categoryLabels,
+                datasets: [{
+                    label: 'Number of Complaints',
+                    data: categoryCounts
+                }]
+            }
+        });
+
+        // Priority Chart
+        new Chart(document.getElementById('priorityChart'), {
+            type: 'pie',
+            data: {
+                labels: priorityLabels,
+                datasets: [{
+                    data: priorityCounts
+                }]
+            }
+        });
+
+        // Daily Trend Chart
+        new Chart(document.getElementById('dailyChart'), {
+            type: 'line',
+            data: {
+                labels: dailyLabels,
+                datasets: [{
+                    label: 'Complaints per Day',
+                    data: dailyCounts
+                }]
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

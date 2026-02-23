@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Result - Smart Incident System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Ticket Successfully Submitted</h1>
+            <p>Ticket ID: <strong>#{{ result.ticket_id }}</strong></p>
+        </header>
+
+        <main class="main-card result-grid">
+
+            <!-- Original Complaint -->
+            <div class="result-section">
+                <h3>Original Complaint</h3>
+                <p class="summary-box">"{{ result.complaint_text }}"</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+
+                <div class="stat-box">
+                    <span class="label">Predicted Category</span>
+                    <span class="value">{{ result.category }}</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="label">Sentiment Analyzed</span>
+                    <span class="value sentiment-{{ result.sentiment | lower }}">
+                        {{ result.sentiment }}
+                    </span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="label">Priority Level</span>
+                    <span class="value priority-{{ result.priority | lower }}">
+                        {{ result.priority }}
+                    </span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="label">Routed Department</span>
+                    <span class="value">{{ result.department }}</span>
+                </div>
+
+            </div>
+
+            <!-- Escalation Alert -->
+            {% if result.escalation_flag %}
+            <div class="alert warning">
+                <strong>⚠ Escalation Required:</strong>
+                This ticket has been flagged for immediate managerial review.
+            </div>
+            {% endif %}
+
+            <!-- Auto Reply -->
+            <div class="result-section">
+                <h3>Auto-Generated Support Reply</h3>
+                <div class="reply-box">
+                    <p>{{ result.reply_text }}</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-group">
+                <a href="/" class="btn-secondary">
+                    Submit Another Issue
+                </a>
+
+                <a href="/dashboard" class="btn-secondary outline">
+                    View Live Dashboard
+                </a>
+            </div>
+
+        </main>
+    </div>
+</body>
+
+</html>

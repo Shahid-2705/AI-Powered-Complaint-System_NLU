@@ -1,0 +1,208 @@
+:root {
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --neutral: #64748b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.main-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-primary {
+    display: inline-block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: #f1f5f9;
+    color: var(--text-main);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+.outline {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+}
+
+.outline:hover {
+    background-color: var(--card-bg);
+    border-color: var(--text-muted);
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.alert.error {
+    background-color: #fef2f2;
+    color: var(--danger);
+    border: 1px solid #fecaca;
+}
+
+.alert.warning {
+    background-color: #fffbeb;
+    color: #b45309;
+    border: 1px solid #fde68a;
+}
+
+/* Result specific styling */
+.result-section {
+    margin-bottom: 2rem;
+}
+
+.summary-box, .reply-box {
+    background-color: #f8fafc;
+    padding: 1.25rem;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.reply-box {
+    border-left-color: var(--success);
+    font-style: normal;
+    color: var(--text-main);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-box .label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.stat-box .value {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.sentiment-positive { color: var(--success); }
+.sentiment-neutral { color: var(--neutral); }
+.sentiment-negative { color: var(--danger); }
+
+.priority-low { color: var(--success); }
+.priority-medium { color: var(--warning); }
+.priority-high { color: var(--danger); }
